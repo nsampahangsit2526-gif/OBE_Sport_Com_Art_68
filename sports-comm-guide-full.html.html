@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คู่มือนักศึกษา | สาขาวิชาสื่อสารการกีฬา มกช. กรุงเทพ</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #1D9E75;
+    --green-dark: #085041;
+    --green-mid: #0F6E56;
+    --green-light: #E1F5EE;
+    --blue: #185FA5;
+    --blue-light: #E6F1FB;
+    --blue-dark: #0C447C;
+    --purple: #534AB7;
+    --purple-light: #EEEDFE;
+    --purple-dark: #3C3489;
+    --amber: #BA7517;
+    --amber-light: #FAEEDA;
+    --amber-dark: #633806;
+    --coral: #993C1D;
+    --coral-light: #FAECE7;
+    --gray-bg: #F8F8F6;
+    --gray-border: rgba(0,0,0,0.10);
+    --text-primary: #1a1a1a;
+    --text-secondary: #555;
+    --text-muted: #888;
+    --white: #fff;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 15px;
+    color: var(--text-primary);
+    background: var(--gray-bg);
+    min-height: 100vh;
+  }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 20px 60px; }
+
+  /* Top bar */
+  .topbar { display: flex; align-items: center; gap: 14px; padding: 20px 0 18px; border-bottom: 1px solid var(--gray-border); margin-bottom: 24px; }
+  .topbar-logo { width: 42px; height: 42px; border-radius: 10px; background: var(--green); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; flex-shrink: 0; }
+  .topbar-title { font-size: 16px; font-weight: 600; }
+  .topbar-sub { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 3px; background: #ebebeb; border-radius: 12px; padding: 5px; margin-bottom: 28px; flex-wrap: wrap; }
+  .tab { flex: 1; min-width: 70px; padding: 8px 8px; border-radius: 8px; border: none; background: transparent; cursor: pointer; font-size: 12px; font-weight: 500; font-family: 'Sarabun', sans-serif; color: var(--text-secondary); transition: all .18s; display: flex; align-items: center; justify-content: center; gap: 5px; white-space: nowrap; }
+  .tab.on { background: var(--white); color: var(--green-dark); box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+  .tab i { font-size: 14px; }
+  .tab:hover:not(.on) { background: rgba(255,255,255,.6); }
+
+  .pg { display: none; }
+  .pg.on { display: block; }
+
+  /* Hero */
+  .hero-band { background: var(--green); border-radius: var(--radius-lg); padding: 32px 28px; margin-bottom: 20px; color: #fff; position: relative; overflow: hidden; }
+  .hero-band::before { content: ''; position: absolute; right: -30px; top: -30px; width: 160px; height: 160px; border-radius: 50%; background: rgba(255,255,255,.06); }
+  .hero-band::after { content: ''; position: absolute; right: 60px; bottom: -50px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,.04); }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; opacity: .75; margin-bottom: 10px; }
+  .hero-band h1 { font-size: 26px; font-weight: 600; line-height: 1.35; margin-bottom: 14px; }
+  .hero-band p { font-size: 14px; opacity: .88; line-height: 1.8; max-width: 500px; }
+
+  /* KPI */
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 28px; }
+  .kpi { background: var(--white); border: 1px solid var(--gray-border); border-radius: var(--radius-lg); padding: 16px; text-align: center; }
+  .kpi-n { font-size: 28px; font-weight: 600; color: var(--green); }
+  .kpi-u { font-size: 11px; color: var(--green-mid); margin-top: 2px; font-weight: 500; }
+  .kpi-l { font-size: 12px; color: var(--text-secondary); margin-top: 8px; line-height: 1.4; }
+
+  .sec-head { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .sec-sub { font-size: 13px; color: var(--text-secondary); margin-bottom: 18px; line-height: 1.7; }
+
+  /* PLO */
+  .plo-wrap { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .plo { background: var(--white); border: 1px solid var(--gray-border); border-radius: var(--radius-lg); padding: 16px; display: flex; gap: 14px; align-items: flex-start; }
+  .plo-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--green-light); display: flex; align-items: center; justify-content: center; color: var(--green-mid); font-size: 20px; flex-shrink: 0; }
+  .plo-tag { font-size: 10px; font-weight: 600; color: var(--green-dark); background: var(--green-light); border-radius: 20px; padding: 2px 10px; display: inline-block; margin-bottom: 6px; }
+  .plo-body h3 { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .plo-body p { font-size: 12px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* Structure */
+  .struct-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 28px; }
+  .struct-card { background: var(--white); border: 1px solid var(--gray-border); border-radius: var(--radius-lg); padding: 18px; }
+  .struct-top { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .struct-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .struct-label { font-size: 12px; font-weight: 600; }
+  .struct-n { font-size: 26px; font-weight: 600; margin-bottom: 4px; }
+  .struct-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.6; }
+
+  .method-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .chip { background: var(--white); border: 1px solid var(--gray-border); border-radius: 20px; padding: 6px 14px; font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+  .chip i { font-size: 14px; color: var(--green); }
+
+  /* Year tabs */
+  .yr-tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .yr-tab { padding: 7px 20px; border-radius: 20px; border: 1px solid var(--gray-border); background: var(--white); cursor: pointer; font-size: 13px; font-weight: 500; font-family: 'Sarabun', sans-serif; color: var(--text-secondary); transition: all .18s; }
+  .yr-tab.on { background: var(--green); color: #fff; border-color: var(--green); }
+  .yr-tab:hover:not(.on) { border-color: var(--green); color: var(--green); }
+  .yr-pan { display: none; }
+  .yr-pan.on { display: block; }
+
+  .goal-bar { border-radius: var(--radius-md); padding: 10px 16px; margin-bottom: 16px; font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+  .goal-1 { background: var(--green-light); color: var(--green-dark); }
+  .goal-2 { background: var(--blue-light); color: var(--blue-dark); }
+  .goal-3 { background: var(--purple-light); color: var(--purple-dark); }
+  .goal-4 { background: var(--amber-light); color: var(--amber-dark); }
+
+  /* Semester */
+  .sem { background: var(--white); border: 1px solid var(--gray-border); border-radius: var(--radius-lg); margin-bottom: 12px; overflow: hidden; }
+  .sem-hd { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--gray-border); background: #fafafa; }
+  .sem-hd-l { font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 7px; }
+  .sem-hd-l i { font-size: 16px; color: var(--green); }
+  .sem-cr { font-size: 11px; font-weight: 600; color: var(--green-mid); background: var(--green-light); padding: 3px 10px; border-radius: 20px; }
+  .crs { display: flex; align-items: flex-start; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--gray-border); transition: background .15s; }
+  .crs:last-child { border-bottom: none; }
+  .crs:hover { background: var(--gray-bg); }
+  .crs-bar { width: 4px; border-radius: 3px; flex-shrink: 0; align-self: stretch; min-height: 22px; margin-top: 2px; }
+  .crs-main { flex: 1; }
+  .crs-name { font-size: 13px; font-weight: 500; line-height: 1.45; }
+  .crs-code { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+  .crs-cr { font-size: 12px; color: var(--text-secondary); flex-shrink: 0; padding-left: 10px; margin-top: 2px; }
+
+  .lg { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 16px; }
+  .lg-i { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+  .lg-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* Catalog */
+  .cat-group { background: var(--white); border: 1px solid var(--gray-border); border-radius: var(--radius-lg); margin-bottom: 12px; overflow: hidden; }
+  .cat-hd { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; cursor: pointer; user-select: none; transition: background .15s; }
+  .cat-hd:hover { background: var(--gray-bg); }
+  .cat-hd-l { display: flex; align-items: center; gap: 10px; }
+  .cat-hd-ico { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .cat-hd-title { font-size: 14px; font-weight: 600; }
+  .cat-hd-meta { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+  .cat-chevron { font-size: 18px; color: var(--text-muted); transition: transform .2s; }
+  .cat-group.open .cat-chevron { transform: rotate(180deg); }
+  .cat-body { display: none; border-top: 1px solid var(--gray-border); }
+  .cat-group.open .cat-body { display: block; }
+  .cat-sub { font-size: 11px; font-weight: 600; color: var(--text-secondary); padding: 10px 16px 4px; background: var(--gray-bg); text-transform: uppercase; letter-spacing: .4px; }
+  .cat-crs { display: flex; align-items: flex-start; gap: 12px; padding: 9px 16px; border-bottom: 1px solid var(--gray-border); }
+  .cat-crs:last-child { border-bottom: none; }
+  .cat-crs:hover { background: var(--gray-bg); }
+  .cat-code { font-size: 11px; color: var(--text-muted); font-family: monospace; flex-shrink: 0; width: 78px; padding-top: 1px; }
+  .cat-name { flex: 1; font-size: 13px; line-height: 1.45; }
+  .cat-cr { font-size: 11px; color: var(--text-secondary); flex-shrink: 0; padding-left: 8px; }
+
+  /* Teacher */
+  .t-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .tc { background: var(--white); border: 1px solid var(--gray-border); border-radius: var(--radius-lg); padding: 20px 16px; text-align: center; transition: border-color .2s, box-shadow .2s; }
+  .tc:hover { border-color: var(--green); box-shadow: 0 2px 12px rgba(29,158,117,.1); }
+  .tc.chair { border-top: 3px solid var(--green); }
+  .av { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600; margin: 0 auto 12px; color: #fff; }
+  .tc-chair-badge { font-size: 10px; font-weight: 600; background: var(--green-light); color: var(--green-dark); padding: 3px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 4px; margin-bottom: 8px; }
+  .tc-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .tc-deg { border-top: 1px solid var(--gray-border); padding-top: 12px; margin-top: 10px; text-align: left; }
+  .tc-deg-row { margin-bottom: 7px; }
+  .tc-deg-row strong { font-size: 12px; font-weight: 600; color: var(--text-primary); }
+  .tc-deg-row span { font-size: 11px; color: var(--text-muted); display: block; line-height: 1.5; margin-top: 1px; }
+
+  /* Career */
+  .car-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .car-card { background: var(--white); border: 1px solid var(--gray-border); border-radius: var(--radius-lg); padding: 18px; transition: border-color .2s; }
+  .car-card:hover { border-color: var(--green); }
+  .car-hd { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .car-ico { width: 40px; height: 40px; border-radius: 10px; background: var(--green-light); display: flex; align-items: center; justify-content: center; color: var(--green-mid); font-size: 20px; flex-shrink: 0; }
+  .car-title { font-size: 13px; font-weight: 600; }
+  .car-card ul { padding: 0; list-style: none; }
+  .car-card li { font-size: 12px; color: var(--text-secondary); padding: 4px 0; line-height: 1.55; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px solid var(--gray-border); }
+  .car-card li:last-child { border-bottom: none; }
+  .car-card li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--green); flex-shrink: 0; margin-top: 5px; }
+
+  /* Grade */
+  .grade-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 14px 0 28px; }
+  .gr { background: var(--white); border: 1px solid var(--gray-border); border-radius: var(--radius-md); padding: 14px 8px; text-align: center; }
+  .gr-val { font-size: 22px; font-weight: 600; color: var(--green); }
+  .gr-val.fail { color: #A32D2D; }
+  .gr-rng { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+  .crit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
+  .crit { background: var(--white); border: 1px solid var(--gray-border); border-radius: var(--radius-md); padding: 14px 16px; }
+  .crit h4 { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+  .crit p { font-size: 13px; font-weight: 600; }
+
+  .contact-box { background: var(--green-light); border-radius: var(--radius-lg); padding: 20px; }
+  .contact-box h4 { font-size: 14px; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; color: var(--green-dark); }
+  .contact-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--green-dark); padding: 5px 0; }
+  .contact-row i { font-size: 16px; color: var(--green-mid); width: 18px; flex-shrink: 0; }
+
+  @media (max-width: 600px) {
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .plo-wrap, .struct-row, .car-grid, .crit-grid { grid-template-columns: 1fr; }
+    .hero-band h1 { font-size: 20px; }
+    .tabs { gap: 2px; }
+    .tab { font-size: 10px; padding: 7px 5px; }
+    .cat-code { width: 64px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="topbar">
+    <div class="topbar-logo"><i class="ti ti-speakerphone"></i></div>
+    <div>
+      <div class="topbar-title">สาขาวิชาสื่อสารการกีฬา</div>
+      <div class="topbar-sub">คณะศิลปศาสตร์ · มหาวิทยาลัยการกีฬาแห่งชาติ วิทยาเขตกรุงเทพ</div>
+    </div>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab on" onclick="go('home',this)"><i class="ti ti-home"></i>หน้าหลัก</button>
+    <button class="tab" onclick="go('cur',this)"><i class="ti ti-layout-grid"></i>หลักสูตร</button>
+    <button class="tab" onclick="go('sub',this)"><i class="ti ti-calendar-event"></i>แผนเรียน</button>
+    <button class="tab" onclick="go('cat',this)"><i class="ti ti-books"></i>คลังรายวิชา</button>
+    <button class="tab" onclick="go('tea',this)"><i class="ti ti-users"></i>อาจารย์</button>
+    <button class="tab" onclick="go('car',this)"><i class="ti ti-briefcase"></i>อาชีพ</button>
+    <button class="tab" onclick="go('rul',this)"><i class="ti ti-clipboard-check"></i>เกรด</button>
+  </div>
+
+  <!-- HOME -->
+  <div id="home" class="pg on">
+    <div class="hero-band">
+      <div class="hero-eyebrow">หลักสูตรศิลปศาสตรบัณฑิต · ปรับปรุง พ.ศ. 2568</div>
+      <h1>ยินดีต้อนรับสู่<br>สาขาวิชาสื่อสารการกีฬา</h1>
+      <p>"สร้างสรรค์และพัฒนา สื่อสารการกีฬาสู่สากล" — มุ่งผลิตนักสื่อสารมืออาชีพที่มีทักษะด้านสื่อดิจิทัล ภาษาสากล และจริยธรรมวิชาชีพในอุตสาหกรรมกีฬา</p>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-n">4</div><div class="kpi-u">ปี</div><div class="kpi-l">ระยะเวลาเรียน</div></div>
+      <div class="kpi"><div class="kpi-n">≥123</div><div class="kpi-u">หน่วยกิต</div><div class="kpi-l">ตลอดหลักสูตร</div></div>
+      <div class="kpi"><div class="kpi-n">5</div><div class="kpi-u">ท่าน</div><div class="kpi-l">อาจารย์ผู้รับผิดชอบ</div></div>
+      <div class="kpi"><div class="kpi-n">400</div><div class="kpi-u">ชั่วโมง</div><div class="kpi-l">ฝึกประสบการณ์จริง</div></div>
+    </div>
+    <p class="sec-head">ผลลัพธ์การเรียนรู้ (PLOs) ที่คุณจะได้รับ</p>
+    <p class="sec-sub">หลักสูตรออกแบบให้บัณฑิตมีความสามารถครบ 4 ด้าน ตามมาตรฐานคุณวุฒิระดับอุดมศึกษา พ.ศ. 2565</p>
+    <div class="plo-wrap">
+      <div class="plo"><div class="plo-icon"><i class="ti ti-brain"></i></div><div class="plo-body"><span class="plo-tag">PLO 1 · ความรู้</span><h3>ประยุกต์ใช้ความรู้ด้านการสื่อสาร</h3><p>วางแผนและปฏิบัติงานสื่อสารในรูปแบบต่าง ๆ ให้เหมาะกับกลุ่มเป้าหมายในอุตสาหกรรมกีฬาได้อย่างมืออาชีพ</p></div></div>
+      <div class="plo"><div class="plo-icon"><i class="ti ti-message-language"></i></div><div class="plo-body"><span class="plo-tag">PLO 2 · ภาษา</span><h3>ใช้ภาษาอังกฤษในอาชีพกีฬา</h3><p>สื่อสาร อ่าน เขียน และนำเสนอภาษาอังกฤษในบริบทวิชาชีพกีฬาได้อย่างเหมาะสม</p></div></div>
+      <div class="plo"><div class="plo-icon"><i class="ti ti-movie"></i></div><div class="plo-body"><span class="plo-tag">PLO 3 · ทักษะ</span><h3>ผลิตสื่อและออกแบบนวัตกรรม</h3><p>สร้างสรรค์เนื้อหา ผลิตสื่อ และแก้ปัญหาการสื่อสารให้องค์กรในอุตสาหกรรมกีฬาได้</p></div></div>
+      <div class="plo"><div class="plo-icon"><i class="ti ti-shield-check"></i></div><div class="plo-body"><span class="plo-tag">PLO 4 · จริยธรรม</span><h3>รู้เท่าทันสื่อและมีจรรยาบรรณ</h3><p>วิเคราะห์สื่ออย่างมีวิจารณญาณ รับผิดชอบต่อสังคม และยึดมั่นจรรยาบรรณวิชาชีพกีฬา</p></div></div>
+    </div>
+  </div>
+
+  <!-- CURRICULUM -->
+  <div id="cur" class="pg">
+    <p class="sec-head">โครงสร้างหลักสูตร ศศ.บ. สื่อสารการกีฬา (ปรับปรุง 2568)</p>
+    <p class="sec-sub">รหัสหลักสูตร 25482201100514 · ปริญญา B.A. (Sports Communication) · เปิดสอนภาคต้น ปีการศึกษา 2568</p>
+    <div class="struct-row">
+      <div class="struct-card"><div class="struct-top"><span class="struct-dot" style="background:#378ADD"></span><span class="struct-label" style="color:#0C447C">หมวดที่ 1</span></div><div class="struct-n" style="color:#185FA5">≥ 24</div><div class="struct-label" style="font-size:14px">ศึกษาทั่วไป</div><div class="struct-desc" style="margin-top:8px">ทักษะภาษา · พัฒนาตนเอง · ดิจิทัล</div></div>
+      <div class="struct-card"><div class="struct-top"><span class="struct-dot" style="background:#1D9E75"></span><span class="struct-label" style="color:#085041">หมวดที่ 2</span></div><div class="struct-n" style="color:#1D9E75">≥ 93</div><div class="struct-label" style="font-size:14px">วิชาเฉพาะ</div><div class="struct-desc" style="margin-top:8px">พื้นฐาน · เฉพาะด้าน · ฝึกงาน</div></div>
+      <div class="struct-card"><div class="struct-top"><span class="struct-dot" style="background:#7F77DD"></span><span class="struct-label" style="color:#3C3489">หมวดที่ 3</span></div><div class="struct-n" style="color:#534AB7">≥ 6</div><div class="struct-label" style="font-size:14px">เลือกเสรี</div><div class="struct-desc" style="margin-top:8px">เลือกได้จากทุกคณะในมหาวิทยาลัย</div></div>
+    </div>
+    <p class="sec-head">รูปแบบการเรียนการสอนในหลักสูตร</p>
+    <div class="method-chips">
+      <span class="chip"><i class="ti ti-bolt"></i>Active Learning</span>
+      <span class="chip"><i class="ti ti-briefcase"></i>Work Integrated Learning</span>
+      <span class="chip"><i class="ti ti-chart-dots"></i>Project-based Learning</span>
+      <span class="chip"><i class="ti ti-puzzle"></i>Problem-based Learning</span>
+      <span class="chip"><i class="ti ti-rotate"></i>Flipped Classroom</span>
+      <span class="chip"><i class="ti ti-users-group"></i>Cooperative Learning</span>
+      <span class="chip"><i class="ti ti-map-pin"></i>Community-based Learning</span>
+      <span class="chip"><i class="ti ti-file-text"></i>Case Studies</span>
+      <span class="chip"><i class="ti ti-eye"></i>Field Activities</span>
+    </div>
+  </div>
+
+  <!-- STUDY PLAN -->
+  <div id="sub" class="pg">
+    <div class="lg">
+      <span class="lg-i"><span class="lg-dot" style="background:#378ADD"></span>ศึกษาทั่วไป</span>
+      <span class="lg-i"><span class="lg-dot" style="background:#1D9E75"></span>พื้นฐานวิชาชีพ</span>
+      <span class="lg-i"><span class="lg-dot" style="background:#7F77DD"></span>วิชาเฉพาะด้าน</span>
+      <span class="lg-i"><span class="lg-dot" style="background:#EF9F27"></span>ฝึกประสบการณ์</span>
+    </div>
+    <div class="yr-tabs">
+      <button class="yr-tab on" onclick="yr(1,this)">ปีที่ 1</button>
+      <button class="yr-tab" onclick="yr(2,this)">ปีที่ 2</button>
+      <button class="yr-tab" onclick="yr(3,this)">ปีที่ 3</button>
+      <button class="yr-tab" onclick="yr(4,this)">ปีที่ 4</button>
+    </div>
+
+    <div id="y1" class="yr-pan on">
+      <div class="goal-bar goal-1"><i class="ti ti-target"></i>เป้าหมายปีที่ 1: วางรากฐานด้านสื่อสาร ผลิตสื่อเบื้องต้น และทักษะภาษาอังกฤษ</div>
+      <div class="sem">
+        <div class="sem-hd"><span class="sem-hd-l"><i class="ti ti-sun"></i>ภาคต้น</span><span class="sem-cr">21 หน่วยกิต</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#378ADD"></span><div class="crs-main"><div class="crs-name">ภาษาอังกฤษเพื่อการสื่อสารในสังคมโลก</div><div class="crs-code">มศ 051065</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#378ADD"></span><div class="crs-main"><div class="crs-name">คนกีฬาสู่วิถีพลเมืองสร้างสรรค์</div><div class="crs-code">สศ 021011</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#378ADD"></span><div class="crs-main"><div class="crs-name">วิทยาศาสตร์กับการรู้เท่าทันการเปลี่ยนแปลง (เลือก)</div><div class="crs-code">หมู่วิชาเลือก</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#1D9E75"></span><div class="crs-main"><div class="crs-name">หลักและทฤษฎีการสื่อสาร</div><div class="crs-code">นศ 011064</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#1D9E75"></span><div class="crs-main"><div class="crs-name">การออกแบบภาพและเสียงในสื่อดิจิทัล</div><div class="crs-code">นศ 041068</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#1D9E75"></span><div class="crs-main"><div class="crs-name">ความรู้พื้นฐานเกี่ยวกับการกีฬา</div><div class="crs-code">พล 011265</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">การเป็นผู้ประกอบการในตลาดดิจิทัล</div><div class="crs-code">บธ 071108</div></div><span class="crs-cr">3 หน่วย</span></div>
+      </div>
+      <div class="sem">
+        <div class="sem-hd"><span class="sem-hd-l"><i class="ti ti-moon"></i>ภาคปลาย</span><span class="sem-cr">18 หน่วยกิต</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#378ADD"></span><div class="crs-main"><div class="crs-name">ภาษาไทยเพื่อการสื่อสารในศตวรรษที่ 21</div><div class="crs-code">มศ 041017</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#378ADD"></span><div class="crs-main"><div class="crs-name">กลุ่มวิชาพัฒนาตนเองและการใช้ชีวิตในสังคม (เลือก)</div><div class="crs-code">สศ xxxxxx</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#378ADD"></span><div class="crs-main"><div class="crs-name">คณิตศาสตร์กับการคิด (เลือก)</div><div class="crs-code">หมู่วิชาเลือก</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#1D9E75"></span><div class="crs-main"><div class="crs-name">การถ่ายภาพเพื่อการสื่อสาร</div><div class="crs-code">นศ 061036</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#1D9E75"></span><div class="crs-main"><div class="crs-name">ทักษะการใช้โปรแกรมสำเร็จรูปในการผลิตสื่อทางการกีฬา</div><div class="crs-code">นศ 091062</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">พัฒนาทักษะการฟังและการพูดภาษาอังกฤษเพื่องานสื่อสารการกีฬา</div><div class="crs-code">มศ 051089</div></div><span class="crs-cr">3 หน่วย</span></div>
+      </div>
+    </div>
+
+    <div id="y2" class="yr-pan">
+      <div class="goal-bar goal-2"><i class="ti ti-target"></i>เป้าหมายปีที่ 2: ทักษะออกแบบสื่อ รายงานข่าว เทคโนโลยี และจริยธรรมวิชาชีพ</div>
+      <div class="sem">
+        <div class="sem-hd"><span class="sem-hd-l"><i class="ti ti-sun"></i>ภาคต้น</span><span class="sem-cr">18 หน่วยกิต</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#378ADD"></span><div class="crs-main"><div class="crs-name">ทักษะภาษาและการสื่อสาร (เลือก)</div><div class="crs-code">มศ xxxxxx</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#378ADD"></span><div class="crs-main"><div class="crs-name">เทคโนโลยีดิจิทัล (เลือก)</div><div class="crs-code">วท xxxxxx</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#1D9E75"></span><div class="crs-main"><div class="crs-name">การสื่อข่าวและการรายงานข่าวกีฬา</div><div class="crs-code">นศ 022044</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#1D9E75"></span><div class="crs-main"><div class="crs-name">การถ่ายภาพเคลื่อนไหว การตัดต่อลำดับภาพและเสียง</div><div class="crs-code">นศ 042069</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">การเขียนสร้างสรรค์เพื่อการสื่อสารการกีฬา</div><div class="crs-code">นศ 023039</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">วิชาเลือก</div><div class="crs-code">จากกลุ่มเลือก</div></div><span class="crs-cr">3 หน่วย</span></div>
+      </div>
+      <div class="sem">
+        <div class="sem-hd"><span class="sem-hd-l"><i class="ti ti-moon"></i>ภาคปลาย</span><span class="sem-cr">15 หน่วยกิต</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#1D9E75"></span><div class="crs-main"><div class="crs-name">กฎหมายและจริยธรรมเพื่องานสื่อสารการกีฬา</div><div class="crs-code">นศ 012065</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">พัฒนาทักษะการอ่านและการเขียนภาษาอังกฤษเพื่องานสื่อสารการกีฬา</div><div class="crs-code">มศ 052090</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">การรู้เท่าทันสื่อและวิเคราะห์สถานการณ์ทางสังคม</div><div class="crs-code">นศ 011072</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">วิชาเลือก + วิชาเลือกเสรี</div><div class="crs-code">จากกลุ่มเลือก</div></div><span class="crs-cr">6 หน่วย</span></div>
+      </div>
+    </div>
+
+    <div id="y3" class="yr-pan">
+      <div class="goal-bar goal-3"><i class="ti ti-target"></i>เป้าหมายปีที่ 3: ทักษะผู้ประกอบการ บริหารสื่อสาร และการวิจัยด้านกีฬา</div>
+      <div class="sem">
+        <div class="sem-hd"><span class="sem-hd-l"><i class="ti ti-sun"></i>ภาคต้น</span><span class="sem-cr">15 หน่วยกิต</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">การวิจัยสื่อสารการกีฬา</div><div class="crs-code">นศ 013039</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">วิชาเลือก 3 วิชา</div><div class="crs-code">จากกลุ่มเลือก</div></div><span class="crs-cr">9 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">วิชาเลือกเสรี</div><div class="crs-code">จากทุกคณะ</div></div><span class="crs-cr">3 หน่วย</span></div>
+      </div>
+      <div class="sem">
+        <div class="sem-hd"><span class="sem-hd-l"><i class="ti ti-moon"></i>ภาคปลาย</span><span class="sem-cr">15 หน่วยกิต</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">องค์การทางการกีฬาและการจัดการแข่งขัน</div><div class="crs-code">พล 013183</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">การบริหารการสื่อสารในอุตสาหกรรมกีฬา</div><div class="crs-code">นศ 093074</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">วิชาเลือก 3 วิชา</div><div class="crs-code">จากกลุ่มเลือก</div></div><span class="crs-cr">9 หน่วย</span></div>
+      </div>
+    </div>
+
+    <div id="y4" class="yr-pan">
+      <div class="goal-bar goal-4"><i class="ti ti-trophy"></i>เป้าหมายปีที่ 4: สร้างนวัตกรรมสื่อและลงสนามฝึกงานจริง 400 ชั่วโมง</div>
+      <div class="sem">
+        <div class="sem-hd"><span class="sem-hd-l"><i class="ti ti-sun"></i>ภาคต้น</span><span class="sem-cr">14 หน่วยกิต</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">การประยุกต์ใช้ภาษาอังกฤษในอุตสาหกรรมกีฬา</div><div class="crs-code">มศ 053093</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">การสร้างสรรค์นวัตกรรมสื่อในอุตสาหกรรมกีฬา</div><div class="crs-code">นศ 094080</div></div><span class="crs-cr">3 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#7F77DD"></span><div class="crs-main"><div class="crs-name">วิชาเลือก 2 วิชา</div><div class="crs-code">จากกลุ่มเลือก</div></div><span class="crs-cr">6 หน่วย</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#EF9F27"></span><div class="crs-main"><div class="crs-name">การเตรียมฝึกประสบการณ์วิชาชีพสื่อสารการกีฬา</div><div class="crs-code">นศ 084014</div></div><span class="crs-cr">2 หน่วย</span></div>
+      </div>
+      <div class="sem">
+        <div class="sem-hd"><span class="sem-hd-l"><i class="ti ti-building"></i>ภาคปลาย · ฝึกงาน</span><span class="sem-cr">7 หน่วยกิต</span></div>
+        <div class="crs"><span class="crs-bar" style="background:#EF9F27"></span><div class="crs-main"><div class="crs-name">การฝึกประสบการณ์วิชาชีพสื่อสารการกีฬา</div><div class="crs-code">นศ 084026 · 400 ชั่วโมงในสถานประกอบการจริง</div></div><span class="crs-cr">7 หน่วย</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COURSE CATALOG -->
+  <div id="cat" class="pg">
+    <p class="sec-head">คลังรายวิชาทั้งหมดในหลักสูตร</p>
+    <p class="sec-sub">กดที่หัวข้อแต่ละกลุ่มเพื่อดูรายวิชาทั้งหมด พร้อมรหัสวิชาและหน่วยกิต — รวมทั้งวิชาบังคับ วิชาเลือก และวิชาเลือกเสรี</p>
+
+    <!-- General Education -->
+    <div class="cat-group" onclick="toggleCat(this)">
+      <div class="cat-hd">
+        <div class="cat-hd-l">
+          <div class="cat-hd-ico" style="background:#E6F1FB;color:#0C447C"><i class="ti ti-school"></i></div>
+          <div><div class="cat-hd-title">หมวดที่ 1 · ศึกษาทั่วไป</div><div class="cat-hd-meta">ไม่น้อยกว่า 24 หน่วยกิต</div></div>
+        </div>
+        <i class="ti ti-chevron-down cat-chevron"></i>
+      </div>
+      <div class="cat-body">
+        <div class="cat-sub">1.1 กลุ่มทักษะภาษาและการสื่อสาร — วิชาบังคับ</div>
+        <div class="cat-crs"><span class="cat-code">มศ 041017</span><span class="cat-name">ภาษาไทยเพื่อการสื่อสารในศตวรรษที่ 21</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 051065</span><span class="cat-name">ภาษาอังกฤษเพื่อการสื่อสารในสังคมโลก</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-sub">1.1 กลุ่มทักษะภาษาและการสื่อสาร — วิชาเลือก</div>
+        <div class="cat-crs"><span class="cat-code">มศ 041018</span><span class="cat-name">วาทการ</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 042019</span><span class="cat-name">มุมมองภาษาจากวรรณกรรม</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 042020</span><span class="cat-name">การเขียนเพื่อพัฒนาอาชีพ</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 052066</span><span class="cat-name">หลักการใช้ภาษาอังกฤษ</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 052067</span><span class="cat-name">ภาษาอังกฤษสำหรับการกีฬา</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 052068</span><span class="cat-name">ภาษาอังกฤษสำหรับการนำเสนออย่างสร้างสรรค์</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 052069</span><span class="cat-name">ภาษาอังกฤษเพื่อการเรียนรู้ด้วยตนเอง</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 052070</span><span class="cat-name">ภาษาอังกฤษผ่านสื่อบันเทิง</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 052071</span><span class="cat-name">การอ่านภาษาอังกฤษเพื่อความบันเทิง</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 052072</span><span class="cat-name">ภาษาอังกฤษสำหรับการเขียนในชีวิตประจำวัน</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 052073</span><span class="cat-name">ภาษาอังกฤษเพื่อการสมัครงาน</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 052074</span><span class="cat-name">ภาษาอังกฤษเพื่อการเตรียมตัวสอบ</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 072019</span><span class="cat-name">ภาษาจีนเพื่อการสื่อสาร</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 082004</span><span class="cat-name">ภาษามลายูเพื่อการสื่อสาร</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 092005</span><span class="cat-name">ภาษาฝรั่งเศสเพื่อการสื่อสาร</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-sub">1.2 กลุ่มพัฒนาตนเองและการใช้ชีวิตในสังคม — วิชาบังคับ</div>
+        <div class="cat-crs"><span class="cat-code">สศ 021011</span><span class="cat-name">คนกีฬาสู่วิถีพลเมืองสร้างสรรค์</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-sub">1.2 กลุ่มพัฒนาตนเองและการใช้ชีวิตในสังคม — วิชาเลือก</div>
+        <div class="cat-crs"><span class="cat-code">สศ 001005</span><span class="cat-name">สมดุลชีวิต</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">สศ 001006</span><span class="cat-name">ความสุขและคุณค่าของชีวิต</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">สศ 021012</span><span class="cat-name">พลวัตทางการกีฬา</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">สศ 021013</span><span class="cat-name">วัยรุ่นสร้างตัว</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">สศ 021014</span><span class="cat-name">อาเซียนกับสังคมโลก</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">สศ 021015</span><span class="cat-name">การเป็นผู้ประกอบการสมัยใหม่</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">สศ 021017</span><span class="cat-name">ภูมิปัญญาและวิถีไทย</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">สศ 022010</span><span class="cat-name">วัยใส ใจสะอาด</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">สศ 022016</span><span class="cat-name">พลเมืองคุณภาพ</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">สศ 041003</span><span class="cat-name">กฎหมายน่ารู้สำหรับชีวิต</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">สศ 051005</span><span class="cat-name">เศรษฐศาสตร์เพื่อการดำเนินชีวิตที่ดี</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">สศ 081001</span><span class="cat-name">สารสนเทศเพื่อการศึกษาค้นคว้า</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-sub">1.3 กลุ่มการคิดและรู้เท่าทันการเปลี่ยนแปลงในยุคดิจิทัล — คณิตศาสตร์กับการคิด</div>
+        <div class="cat-crs"><span class="cat-code">วท 091009</span><span class="cat-name">การคิดและการตัดสินใจ</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">วท 091010</span><span class="cat-name">คณิตศาสตร์ในชีวิตประจำวัน</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">วท 101011</span><span class="cat-name">สถิติในชีวิตประจำวัน</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-sub">1.3 หมู่วิชาวิทยาศาสตร์กับการรู้เท่าทันการเปลี่ยนแปลง</div>
+        <div class="cat-crs"><span class="cat-code">วท 051003</span><span class="cat-name">วิทยาศาสตร์ในโลกอนาคต</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">วท 051004</span><span class="cat-name">วิทยาศาสตร์กับวิถีชีวิตใหม่</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">วท 061006</span><span class="cat-name">รักษ์สิ่งแวดล้อม</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-sub">1.3 หมู่วิชาเทคโนโลยีดิจิทัล</div>
+        <div class="cat-crs"><span class="cat-code">วท 111020</span><span class="cat-name">ทักษะความเป็นพลเมืองดิจิทัล</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">วท 112021</span><span class="cat-name">การสร้างและการประยุกต์ใช้สื่อดิจิทัล</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">วท 111022</span><span class="cat-name">การประยุกต์ใช้เครื่องมือดิจิทัลในชีวิตประจำวัน</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">วท 111023</span><span class="cat-name">การจัดการเอกสารด้วยซอฟต์แวร์ประมวลผลคำ</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">วท 111024</span><span class="cat-name">การใช้ซอฟต์แวร์ตารางคำนวณเพื่อการวิเคราะห์ข้อมูล</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">วท 111025</span><span class="cat-name">การใช้ซอฟต์แวร์ออกแบบการนำเสนออย่างมีประสิทธิภาพ</span><span class="cat-cr">3(2-2-5)</span></div>
+      </div>
+    </div>
+
+    <!-- Professional Foundation -->
+    <div class="cat-group" onclick="toggleCat(this)">
+      <div class="cat-hd">
+        <div class="cat-hd-l">
+          <div class="cat-hd-ico" style="background:#E1F5EE;color:#085041"><i class="ti ti-stack-2"></i></div>
+          <div><div class="cat-hd-title">หมวดที่ 2.1 · วิชาพื้นฐานวิชาชีพ</div><div class="cat-hd-meta">กำหนดให้เรียน 24 หน่วยกิต (บังคับทุกวิชา)</div></div>
+        </div>
+        <i class="ti ti-chevron-down cat-chevron"></i>
+      </div>
+      <div class="cat-body">
+        <div class="cat-crs"><span class="cat-code">นศ 011064</span><span class="cat-name">หลักและทฤษฎีการสื่อสาร</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 041068</span><span class="cat-name">การออกแบบภาพและเสียงในสื่อดิจิทัล</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 061036</span><span class="cat-name">การถ่ายภาพเพื่อการสื่อสาร</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 091062</span><span class="cat-name">ทักษะการใช้โปรแกรมสำเร็จรูปในการผลิตสื่อทางการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 012065</span><span class="cat-name">กฎหมายและจริยธรรมเพื่องานสื่อสารการกีฬา</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 022044</span><span class="cat-name">การสื่อข่าวและการรายงานข่าวกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 042069</span><span class="cat-name">การถ่ายภาพเคลื่อนไหว การตัดต่อลำดับภาพและเสียงเพื่องานสื่อสารการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">พล 011265</span><span class="cat-name">ความรู้พื้นฐานเกี่ยวกับการกีฬา</span><span class="cat-cr">3(3-0-6)</span></div>
+      </div>
+    </div>
+
+    <!-- Major Required -->
+    <div class="cat-group" onclick="toggleCat(this)">
+      <div class="cat-hd">
+        <div class="cat-hd-l">
+          <div class="cat-hd-ico" style="background:#EEEDFE;color:#3C3489"><i class="ti ti-bookmark"></i></div>
+          <div><div class="cat-hd-title">หมวดที่ 2.2.1 · วิชาเฉพาะด้าน (บังคับ)</div><div class="cat-hd-meta">กำหนดให้เรียน 30 หน่วยกิต</div></div>
+        </div>
+        <i class="ti ti-chevron-down cat-chevron"></i>
+      </div>
+      <div class="cat-body">
+        <div class="cat-crs"><span class="cat-code">นศ 094080</span><span class="cat-name">การสร้างสรรค์นวัตกรรมสื่อในอุตสาหกรรมกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">บธ 071108</span><span class="cat-name">การเป็นผู้ประกอบการในตลาดดิจิทัล</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 093074</span><span class="cat-name">การบริหารการสื่อสารในอุตสาหกรรมกีฬา</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 023039</span><span class="cat-name">การเขียนสร้างสรรค์เพื่อการสื่อสารการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 013039</span><span class="cat-name">การวิจัยสื่อสารการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">พล 013183</span><span class="cat-name">องค์การทางการกีฬาและการจัดการแข่งขัน</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 011072</span><span class="cat-name">การรู้เท่าทันสื่อและวิเคราะห์สถานการณ์ทางสังคม</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 051089</span><span class="cat-name">พัฒนาทักษะการฟังและการพูดภาษาอังกฤษเพื่องานสื่อสารการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 052090</span><span class="cat-name">พัฒนาทักษะการอ่านและการเขียนภาษาอังกฤษเพื่องานสื่อสารการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 053093</span><span class="cat-name">การประยุกต์ใช้ภาษาอังกฤษในอุตสาหกรรมกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+      </div>
+    </div>
+
+    <!-- Major Elective -->
+    <div class="cat-group" onclick="toggleCat(this)">
+      <div class="cat-hd">
+        <div class="cat-hd-l">
+          <div class="cat-hd-ico" style="background:#EEEDFE;color:#3C3489"><i class="ti ti-list-check"></i></div>
+          <div><div class="cat-hd-title">หมวดที่ 2.2.2 · วิชาเฉพาะด้าน (เลือก)</div><div class="cat-hd-meta">เลือกไม่น้อยกว่า 30 หน่วยกิต จาก 4 กลุ่ม</div></div>
+        </div>
+        <i class="ti ti-chevron-down cat-chevron"></i>
+      </div>
+      <div class="cat-body">
+        <div class="cat-sub">กลุ่มวิชาด้านการสื่อสาร</div>
+        <div class="cat-crs"><span class="cat-code">นศ 012081</span><span class="cat-name">ความคิดสร้างสรรค์และการคิดเชิงวิพากษ์</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 012082</span><span class="cat-name">การสื่อสารเชิงกลยุทธ์</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 011079</span><span class="cat-name">การสื่อสารการตลาด</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 013088</span><span class="cat-name">การสร้างแบรนด์องค์กร</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 012083</span><span class="cat-name">การพัฒนาบุคลิกภาพสำหรับอินฟลูเอนเซอร์</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 092072</span><span class="cat-name">ผู้ประกาศกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 062025</span><span class="cat-name">การถ่ายภาพกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 063039</span><span class="cat-name">การถ่ายภาพแฟชั่นกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 092073</span><span class="cat-name">การวิเคราะห์ข้อมูลและการแสดงผลด้วยภาพเพื่อสื่อกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 054030</span><span class="cat-name">การรณรงค์การสื่อสารสำหรับอุตสาหกรรมการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 012084</span><span class="cat-name">การเล่าเรื่องในแพลตฟอร์มออนไลน์</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 012085</span><span class="cat-name">การจัดการช่องทางการสื่อสาร</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 032046</span><span class="cat-name">การประชาสัมพันธ์และสื่อมวลชนสัมพันธ์</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 093075</span><span class="cat-name">การสื่อสารกับแฟนกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 093076</span><span class="cat-name">วิเคราะห์สถานการณ์ปัจจุบันในอุตสาหกรรมกีฬา</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 093077</span><span class="cat-name">การสื่อสารในภาวะวิกฤตขององค์กรทางการกีฬา</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 093078</span><span class="cat-name">การสื่อสารเพื่อบริหารความสัมพันธ์ในอุตสาหกรรมกีฬา</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 093028</span><span class="cat-name">การบริหารกิจการและการเป็นผู้ประกอบการสื่อกีฬา</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 032045</span><span class="cat-name">การเขียนและการสร้างสรรค์เนื้อหาเพื่อการประชาสัมพันธ์</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 012086</span><span class="cat-name">การสร้างสรรค์เนื้อหาผ่านสื่อออนไลน์</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 093045</span><span class="cat-name">กิจกรรมทางการตลาดเพื่อการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 093029</span><span class="cat-name">การสื่อสารการตลาดแบบบูรณาการเพื่ออุตสาหกรรมการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 084011</span><span class="cat-name">การสัมมนาทางการสื่อสารการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 011080</span><span class="cat-name">การสื่อสารเพื่อคุ้มครองผู้บริโภค</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 053091</span><span class="cat-name">การอ่านภาษาอังกฤษสำหรับวิชาชีพสื่อสารการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">มศ 053092</span><span class="cat-name">การเขียนภาษาอังกฤษสำหรับวิชาชีพสื่อสารการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-sub">กลุ่มวิชาด้านการผลิตสื่อ</div>
+        <div class="cat-crs"><span class="cat-code">นศ 043044</span><span class="cat-name">การผลิตรายการกีฬาและการนำเสนอผ่านสื่อสังคมออนไลน์</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 093079</span><span class="cat-name">การผลิตข่าวสารทางการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 051027</span><span class="cat-name">การสร้างสรรค์และผลิตงานโฆษณาทางการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 043045</span><span class="cat-name">การเขียนบทเพื่อการสื่อสารผ่านสื่อดิจิทัล</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 042040</span><span class="cat-name">การตัดต่อลำดับภาพและเสียงเพื่องานสื่อสารการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 093023</span><span class="cat-name">การออกแบบภาพประกอบและอินโฟกราฟิก</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 053029</span><span class="cat-name">การออกแบบผลิตภัณฑ์ส่งเสริมการขายทางกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 013088</span><span class="cat-name">การสร้างสรรค์และผลิตสื่อสตรีมมิ่ง</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 094034</span><span class="cat-name">โครงงานพิเศษทางการสื่อสารการกีฬา</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-sub">กลุ่มวิชาด้านบริหารธุรกิจ</div>
+        <div class="cat-crs"><span class="cat-code">บธ 063048</span><span class="cat-name">การจัดการเชิงกลยุทธ์</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">บธ 061047</span><span class="cat-name">องค์การและการจัดการสมัยใหม่</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">บธ 062046</span><span class="cat-name">การจัดการทรัพยากรมนุษย์</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">บธ 041014</span><span class="cat-name">การตลาดในยุคดิจิทัล</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">บธ 002026</span><span class="cat-name">พฤติกรรมผู้บริโภค</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-crs"><span class="cat-code">บธ 064059</span><span class="cat-name">การบริหารลูกค้าสัมพันธ์</span><span class="cat-cr">3(3-0-6)</span></div>
+        <div class="cat-sub">กลุ่มวิชาด้านกีฬา</div>
+        <div class="cat-crs"><span class="cat-code">พล 032596</span><span class="cat-name">ทักษะกีฬาว่ายน้ำ</span><span class="cat-cr">1(0-2-1)</span></div>
+        <div class="cat-crs"><span class="cat-code">พล 032640</span><span class="cat-name">กีฬาอีสปอร์ต</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">พล 032641</span><span class="cat-name">กีฬายิงธนู</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">พล 032642</span><span class="cat-name">กีฬามวยสากล</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">พล 032643</span><span class="cat-name">กีฬาปันจักสีลัต</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">พล 042404</span><span class="cat-name">กีฬาเบสบอล</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">พล 042405</span><span class="cat-name">กีฬาจานร่อน</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">พล 042406</span><span class="cat-name">กีฬาเรือพาย</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">พล 042407</span><span class="cat-name">กีฬาฮอกกี้</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">พล 051324</span><span class="cat-name">กีฬาต่อสู้</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">พล 051328</span><span class="cat-name">กีฬาประเภททีม</span><span class="cat-cr">3(2-2-5)</span></div>
+        <div class="cat-crs"><span class="cat-code">พล 051329</span><span class="cat-name">กีฬาประเภทบุคคล</span><span class="cat-cr">3(2-2-5)</span></div>
+      </div>
+    </div>
+
+    <!-- Internship -->
+    <div class="cat-group" onclick="toggleCat(this)">
+      <div class="cat-hd">
+        <div class="cat-hd-l">
+          <div class="cat-hd-ico" style="background:#FAEEDA;color:#633806"><i class="ti ti-briefcase"></i></div>
+          <div><div class="cat-hd-title">หมวดที่ 2.3 · วิชาฝึกประสบการณ์วิชาชีพ</div><div class="cat-hd-meta">กำหนดให้เรียน 9 หน่วยกิต</div></div>
+        </div>
+        <i class="ti ti-chevron-down cat-chevron"></i>
+      </div>
+      <div class="cat-body">
+        <div class="cat-crs"><span class="cat-code">นศ 084014</span><span class="cat-name">การเตรียมฝึกประสบการณ์วิชาชีพสื่อสารการกีฬา</span><span class="cat-cr">2(90)</span></div>
+        <div class="cat-crs"><span class="cat-code">นศ 084026</span><span class="cat-name">การฝึกประสบการณ์วิชาชีพสื่อสารการกีฬา</span><span class="cat-cr">7(400)</span></div>
+      </div>
+    </div>
+
+    <!-- Free Elective -->
+    <div class="cat-group" onclick="toggleCat(this)">
+      <div class="cat-hd">
+        <div class="cat-hd-l">
+          <div class="cat-hd-ico" style="background:#FAECE7;color:#993C1D"><i class="ti ti-stars"></i></div>
+          <div><div class="cat-hd-title">หมวดที่ 3 · วิชาเลือกเสรี</div><div class="cat-hd-meta">ไม่น้อยกว่า 6 หน่วยกิต</div></div>
+        </div>
+        <i class="ti ti-chevron-down cat-chevron"></i>
+      </div>
+      <div class="cat-body">
+        <div class="cat-crs"><span class="cat-code" style="width:auto"><i class="ti ti-info-circle" style="color:#993C1D"></i></span><span class="cat-name">นักศึกษาสามารถเลือกเรียนรายวิชาของทุกคณะที่เปิดสอนในหลักสูตรระดับปริญญาตรีของมหาวิทยาลัยการกีฬาแห่งชาติได้ตามความสนใจ เพื่อเปิดโอกาสในการเรียนรู้ข้ามศาสตร์</span><span class="cat-cr">≥6 หน่วย</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEACHERS -->
+  <div id="tea" class="pg">
+    <p class="sec-head">คณาจารย์ผู้รับผิดชอบหลักสูตร</p>
+    <p class="sec-sub">อาจารย์ผู้รับผิดชอบหลักสูตรทั้ง 5 ท่าน มีคุณวุฒิและผลงานทางวิชาการตามเกณฑ์ สำนักงาน อว.</p>
+    <div class="t-grid">
+      <div class="tc chair">
+        <div class="av" style="background:#1D9E75">ณพ</div>
+        <div class="tc-chair-badge"><i class="ti ti-crown" style="font-size:11px"></i> ประธานหลักสูตร</div>
+        <div class="tc-name">อ.ดร.ณัฐพงศ์ สัมปหังสิต</div>
+        <div class="tc-deg">
+          <div class="tc-deg-row"><strong>ปร.ด.</strong> นิเทศศาสตร์<span>ม.สุโขทัยธรรมาธิราช · 2564</span></div>
+          <div class="tc-deg-row"><strong>ศศ.ม.</strong> เทคโนโลยีสื่อสารมวลชน<span>ม.รามคำแหง · 2555</span></div>
+          <div class="tc-deg-row"><strong>ศศ.บ.</strong> ความสัมพันธ์ระหว่างประเทศ<span>ม.เกษตรศาสตร์ · 2545</span></div>
+        </div>
+      </div>
+      <div class="tc">
+        <div class="av" style="background:#185FA5">มว</div><div style="height:24px"></div>
+        <div class="tc-name">อ.ดร.มนตรี วงษ์รักษ์</div>
+        <div class="tc-deg">
+          <div class="tc-deg-row"><strong>ปร.ด.</strong> นิเทศศาสตร์และนวัตกรรม<span>NIDA (สพบ.) · 2566</span></div>
+          <div class="tc-deg-row"><strong>นศ.ม.</strong> การสื่อสาร<span>ม.นเรศวร · 2556</span></div>
+          <div class="tc-deg-row"><strong>ศศ.บ.</strong> ภาษาศาสตร์<span>ม.นเรศวร · 2551</span></div>
+        </div>
+      </div>
+      <div class="tc">
+        <div class="av" style="background:#534AB7">ฉว</div><div style="height:24px"></div>
+        <div class="tc-name">อ.ฉัตราวุธ สุขเฉลิม</div>
+        <div class="tc-deg">
+          <div class="tc-deg-row"><strong>ศศ.ม.</strong> เทคโนโลยีสื่อสารมวลชน<span>ม.รามคำแหง · 2558</span></div>
+          <div class="tc-deg-row"><strong>ศศ.บ.</strong> นิเทศศาสตร์<span>ม.ราชภัฎบ้านสมเด็จฯ · 2550</span></div>
+        </div>
+      </div>
+      <div class="tc">
+        <div class="av" style="background:#BA7517">ชป</div><div style="height:24px"></div>
+        <div class="tc-name">อ.ชนะชัย ประสาทเกษการณ์</div>
+        <div class="tc-deg">
+          <div class="tc-deg-row"><strong>นศ.ม.</strong> การสื่อสารสื่อดิจิทัล<span>ม.ศรีปทุม · 2559</span></div>
+          <div class="tc-deg-row"><strong>ศศ.บ.</strong> สื่อสารการกีฬา<span>สถาบันการพลศึกษา · 2553</span></div>
+        </div>
+      </div>
+      <div class="tc">
+        <div class="av" style="background:#993C1D">ปท</div><div style="height:24px"></div>
+        <div class="tc-name">อ.ปรทิพย์ ฟักเจริญ</div>
+        <div class="tc-deg">
+          <div class="tc-deg-row"><strong>บธ.ม.</strong> บริหารธุรกิจ<span>ม.ปทุมธานี · 2557</span></div>
+          <div class="tc-deg-row"><strong>บธ.บ.</strong> คอมพิวเตอร์ธุรกิจ<span>ม.สวนดุสิต · 2547</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAREER -->
+  <div id="car" class="pg">
+    <p class="sec-head">อาชีพที่สามารถประกอบได้หลังสำเร็จการศึกษา</p>
+    <p class="sec-sub">บัณฑิตสื่อสารการกีฬาสามารถทำงานได้ทั้งในภาครัฐและเอกชน ทั้งในฐานะพนักงานและผู้ประกอบการอิสระ</p>
+    <div class="car-grid">
+      <div class="car-card">
+        <div class="car-hd"><div class="car-ico"><i class="ti ti-microphone"></i></div><div class="car-title">นักสื่อสารมวลชนทางการกีฬา</div></div>
+        <ul><li>บรรณาธิการและผู้กำกับรายการกีฬา</li><li>ผู้ประกาศ พิธีกร และผู้สื่อข่าวกีฬา</li><li>ผู้สร้างสรรค์รายการและข่าวกีฬา</li><li>ช่างภาพ วิดีโอ และพนักงานตัดต่อ</li><li>พนักงานกราฟิกสื่อกีฬา</li></ul>
+      </div>
+      <div class="car-card">
+        <div class="car-hd"><div class="car-ico"><i class="ti ti-device-mobile"></i></div><div class="car-title">นักผลิตสื่อดิจิทัลทางการกีฬา</div></div>
+        <ul><li>คอนเทนต์ครีเอเตอร์กีฬา</li><li>ผู้ผลิตสื่อมัลติแพลตฟอร์ม</li><li>ผู้ผลิตสื่อโสตทัศน์และนวัตกรรม</li><li>ผู้ประกอบการสื่ออิสระ</li><li>นักออกแบบโฆษณากีฬา</li></ul>
+      </div>
+      <div class="car-card">
+        <div class="car-hd"><div class="car-ico"><i class="ti ti-building"></i></div><div class="car-title">นักจัดการสื่อสารองค์กรกีฬา</div></div>
+        <ul><li>ผู้บริหารโฆษณาและตราสินค้ากีฬา</li><li>ผู้บริหารงานประชาสัมพันธ์กีฬา</li><li>ผู้จัดกิจกรรมพิเศษด้านกีฬา</li><li>นักการตลาดดิจิทัลกีฬา</li></ul>
+      </div>
+      <div class="car-card">
+        <div class="car-hd"><div class="car-ico"><i class="ti ti-star"></i></div><div class="car-title">อาชีพอื่น ๆ ในวงการสื่อสาร</div></div>
+        <ul><li>ผู้สอนด้านนิเทศศาสตร์และสื่อสาร</li><li>นักสื่อสารองค์กรภาครัฐและเอกชน</li><li>นักวิเคราะห์ข้อมูลและสื่อ</li><li>ผู้เชี่ยวชาญด้าน Social Media</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULES -->
+  <div id="rul" class="pg">
+    <p class="sec-head">ระบบประเมินผลและเกณฑ์สำเร็จการศึกษา</p>
+    <p class="sec-sub">ใช้ระบบประเมินผลตามระเบียบ มกช. ว่าด้วยการจัดการศึกษาระดับปริญญาตรี พ.ศ. 2568</p>
+    <div style="font-size:14px;font-weight:600;margin-bottom:10px">ระดับคะแนน (เกรด)</div>
+    <div class="grade-grid">
+      <div class="gr"><div class="gr-val">A</div><div class="gr-rng">80 – 100</div></div>
+      <div class="gr"><div class="gr-val">B+</div><div class="gr-rng">75 – 79</div></div>
+      <div class="gr"><div class="gr-val">B</div><div class="gr-rng">70 – 74</div></div>
+      <div class="gr"><div class="gr-val">C+</div><div class="gr-rng">65 – 69</div></div>
+      <div class="gr"><div class="gr-val">C</div><div class="gr-rng">60 – 64</div></div>
+      <div class="gr"><div class="gr-val">D+</div><div class="gr-rng">55 – 59</div></div>
+      <div class="gr"><div class="gr-val">D</div><div class="gr-rng">50 – 54</div></div>
+      <div class="gr"><div class="gr-val fail">F</div><div class="gr-rng">ต่ำกว่า 50</div></div>
+    </div>
+    <div style="font-size:14px;font-weight:600;margin-bottom:10px">เกณฑ์สำเร็จการศึกษา</div>
+    <div class="crit-grid">
+      <div class="crit"><h4>หน่วยกิตรวม</h4><p>ไม่น้อยกว่า 123 หน่วยกิต</p></div>
+      <div class="crit"><h4>การสอบประมวลความรู้</h4><p>ผ่าน Comprehensive Exam</p></div>
+      <div class="crit"><h4>ฝึกประสบการณ์วิชาชีพ</h4><p>ครบ 400 ชั่วโมง และผ่านการประเมิน</p></div>
+      <div class="crit"><h4>มาตรฐานคุณวุฒิ</h4><p>บรรลุ PLOs ตามเกณฑ์ มคอ. 2565</p></div>
+    </div>
+    <div class="contact-box">
+      <h4><i class="ti ti-address-book"></i>ติดต่อหลักสูตร</h4>
+      <div class="contact-row"><i class="ti ti-building"></i>สาขาวิชาสื่อสารการกีฬา คณะศิลปศาสตร์</div>
+      <div class="contact-row"><i class="ti ti-map-pin"></i>มหาวิทยาลัยการกีฬาแห่งชาติ วิทยาเขตกรุงเทพ</div>
+      <div class="contact-row"><i class="ti ti-user"></i>ประธานหลักสูตร: อ.ดร.ณัฐพงศ์ สัมปหังสิต</div>
+      <div class="contact-row"><i class="ti ti-school"></i>สังกัดกระทรวงการท่องเที่ยวและกีฬา</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function go(id, btn) {
+  document.querySelectorAll('.pg').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function yr(n, btn) {
+  document.querySelectorAll('.yr-pan').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.yr-tab').forEach(b => b.classList.remove('on'));
+  document.getElementById('y' + n).classList.add('on');
+  btn.classList.add('on');
+}
+function toggleCat(el) {
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
